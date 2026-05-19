@@ -68,18 +68,15 @@
                   </div>
                 </dl>
               </div>
-              <div class="project-figures three">
+              <div class="project-viewer" data-viewer>
+                <div class="viewer-tabs" role="tablist" aria-label="LSA OEO figures">
+                  <button class="active" type="button" data-src="assets/projects/lsa-cascaded-rl-oeo.pdf" data-caption="Scheme: cascaded zero-dispersion recirculating-loop OEO.">Scheme</button>
+                  <button type="button" data-src="assets/projects/lsa-esa-result.pdf" data-caption="Mode purity result: electrical spectrum and sidemode behavior.">Mode purity</button>
+                  <button type="button" data-src="assets/projects/lsa-phase-noise.pdf" data-caption="Phase noise result.">Phase noise</button>
+                </div>
                 <figure>
-                  <object data="assets/projects/lsa-cascaded-rl-oeo.pdf" type="application/pdf"></object>
+                  <iframe title="LSA OEO project figure" src="assets/projects/lsa-cascaded-rl-oeo.pdf"></iframe>
                   <figcaption>Scheme: cascaded zero-dispersion recirculating-loop OEO.</figcaption>
-                </figure>
-                <figure>
-                  <object data="assets/projects/lsa-esa-result.pdf" type="application/pdf"></object>
-                  <figcaption>Mode purity result: electrical spectrum and sidemode behavior.</figcaption>
-                </figure>
-                <figure>
-                  <object data="assets/projects/lsa-phase-noise.pdf" type="application/pdf"></object>
-                  <figcaption>Phase noise result.</figcaption>
                 </figure>
               </div>
             </article>
@@ -108,14 +105,14 @@
                   </div>
                 </dl>
               </div>
-              <div class="project-figures two">
+              <div class="project-viewer" data-viewer>
+                <div class="viewer-tabs" role="tablist" aria-label="High-order mode-locked OEO figures">
+                  <button class="active" type="button" data-src="assets/projects/high-order-hml-scheme.pdf" data-caption="Scheme: harmonic mode-locked recirculating-loop OEO.">Scheme</button>
+                  <button type="button" data-src="assets/projects/high-order-locked-result.pdf" data-caption="Main result: ultra-high-order locked microwave frequency comb.">Main result</button>
+                </div>
                 <figure>
-                  <object data="assets/projects/high-order-hml-scheme.pdf" type="application/pdf"></object>
+                  <iframe title="High-order harmonic mode-locked OEO project figure" src="assets/projects/high-order-hml-scheme.pdf"></iframe>
                   <figcaption>Scheme: harmonic mode-locked recirculating-loop OEO.</figcaption>
-                </figure>
-                <figure>
-                  <object data="assets/projects/high-order-locked-result.pdf" type="application/pdf"></object>
-                  <figcaption>Main result: ultra-high-order locked microwave frequency comb.</figcaption>
                 </figure>
               </div>
             </article>
@@ -150,14 +147,14 @@
                   </div>
                 </dl>
               </div>
-              <div class="project-figures two">
+              <div class="project-viewer" data-viewer>
+                <div class="viewer-tabs" role="tablist" aria-label="Hilbert-transform project figures">
+                  <button class="active" type="button" data-src="assets/projects/hilbert-scheme.pdf" data-caption="Scheme: microwave photonic Hilbert-transform processor.">Scheme</button>
+                  <button type="button" data-src="assets/projects/hilbert-result.pdf" data-caption="Main result: Hilbert-transform performance.">Main result</button>
+                </div>
                 <figure>
-                  <object data="assets/projects/hilbert-scheme.pdf" type="application/pdf"></object>
+                  <iframe title="Hilbert-transform project figure" src="assets/projects/hilbert-scheme.pdf"></iframe>
                   <figcaption>Scheme: microwave photonic Hilbert-transform processor.</figcaption>
-                </figure>
-                <figure>
-                  <object data="assets/projects/hilbert-result.pdf" type="application/pdf"></object>
-                  <figcaption>Main result: Hilbert-transform performance.</figcaption>
                 </figure>
               </div>
             </article>
@@ -186,14 +183,14 @@
                   </div>
                 </dl>
               </div>
-              <div class="project-figures two">
+              <div class="project-viewer" data-viewer>
+                <div class="viewer-tabs" role="tablist" aria-label="Narrowband filter project figures">
+                  <button class="active" type="button" data-src="assets/projects/narrowband-filter-scheme.pdf" data-caption="Scheme: chirp-like sliced ASE source based microwave photonic filter.">Scheme</button>
+                  <button type="button" data-src="assets/projects/narrowband-filter-result.pdf" data-caption="Main result: independently tunable narrowband passbands.">Main result</button>
+                </div>
                 <figure>
-                  <object data="assets/projects/narrowband-filter-scheme.pdf" type="application/pdf"></object>
+                  <iframe title="Narrowband microwave photonic filter project figure" src="assets/projects/narrowband-filter-scheme.pdf"></iframe>
                   <figcaption>Scheme: chirp-like sliced ASE source based microwave photonic filter.</figcaption>
-                </figure>
-                <figure>
-                  <object data="assets/projects/narrowband-filter-result.pdf" type="application/pdf"></object>
-                  <figcaption>Main result: independently tunable narrowband passbands.</figcaption>
                 </figure>
               </div>
             </article>
@@ -223,5 +220,19 @@
         </details>
       </section>
     </main>
+    <script>
+      document.querySelectorAll("[data-viewer]").forEach((viewer) => {
+        const frame = viewer.querySelector("iframe");
+        const caption = viewer.querySelector("figcaption");
+        viewer.querySelectorAll(".viewer-tabs button").forEach((button) => {
+          button.addEventListener("click", () => {
+            viewer.querySelectorAll(".viewer-tabs button").forEach((item) => item.classList.remove("active"));
+            button.classList.add("active");
+            frame.src = button.dataset.src;
+            caption.textContent = button.dataset.caption;
+          });
+        });
+      });
+    </script>
   </body>
 </html>

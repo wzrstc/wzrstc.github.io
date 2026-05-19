@@ -532,24 +532,37 @@ h3 {
   color: var(--subtle);
 }
 
-.project-figures {
-  display: grid;
-  gap: 16px;
+.project-viewer {
+  min-width: 0;
 }
 
-.project-figures.two {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.viewer-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
-.project-figures.three {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.viewer-tabs button {
+  cursor: pointer;
+  min-height: 38px;
+  padding: 8px 13px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--subtle);
+  background: #ffffff;
+  font: inherit;
+  font-weight: 700;
 }
 
-.project-figures.three figure:first-child {
-  grid-column: 1 / -1;
+.viewer-tabs button.active,
+.viewer-tabs button:hover {
+  color: #ffffff;
+  border-color: var(--blue);
+  background: var(--blue);
 }
 
-.project-figures figure {
+.project-viewer figure {
   margin: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -557,19 +570,15 @@ h3 {
   overflow: hidden;
 }
 
-.project-figures object {
+.project-viewer iframe {
   display: block;
   width: 100%;
-  height: clamp(240px, 32vw, 430px);
+  height: clamp(420px, 46vw, 720px);
   border: 0;
   background: #ffffff;
 }
 
-.project-figures.three figure:first-child object {
-  height: clamp(260px, 34vw, 460px);
-}
-
-.project-figures figcaption {
+.project-viewer figcaption {
   padding: 12px 14px 14px;
   color: var(--subtle);
   font-size: 0.92rem;
@@ -646,9 +655,7 @@ h3 {
   .metrics,
   .highlight-grid,
   .awards-grid,
-  .project-detail,
-  .project-figures.two,
-  .project-figures.three {
+  .project-detail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -689,19 +696,12 @@ h3 {
   .awards-grid,
   .publication,
   .contact-section,
-  .industry-list,
-  .project-figures.two,
-  .project-figures.three {
+  .industry-list {
     grid-template-columns: 1fr;
   }
 
-  .project-figures.three figure:first-child {
-    grid-column: auto;
-  }
-
-  .project-figures object,
-  .project-figures.three figure:first-child object {
-    height: 300px;
+  .project-viewer iframe {
+    height: 420px;
   }
 
   .metrics a {
