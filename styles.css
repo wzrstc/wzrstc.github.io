@@ -406,6 +406,25 @@ h3 {
   color: var(--subtle);
 }
 
+.certificate-link {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 18px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--blue);
+  background: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.certificate-link:hover {
+  color: #ffffff;
+  border-color: var(--blue);
+  background: var(--blue);
+}
+
 .contact-section {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
